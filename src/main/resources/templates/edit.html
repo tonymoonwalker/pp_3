@@ -5,16 +5,23 @@
     <title>Edit User</title>
 </head>
 <body>
-<form action="#" th:action="@{/edit}" th:object="${user}" method="post">
-    <label for="#id">ID</label>
-    <input readonly type="number" id="#id" name="id" th:placeholder="${user.id}"><br>
-    <label for="#firstname"></label>
-    <input type="text" id="#firstname" name="firstname"><br>
-    <label for="#lastname"></label>
-    <input type="text" id="#lastname" name="lastname"><br>
-    <label for="#email">Email</label>
-    <input type="email" id="#email" name="email" pattern="^[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]+">
-    <input type="submit" value="Save Changes">
+<form th:method="POST" th:action="@{'/edit?id=' + ${user.id}}" th:object="${user}">
+    <label for="firstname">Enter first name: </label>
+    <input type="text" name="firstName" th:field="*{firstname}" id="firstname" tabindex="1"/>
+    <span class="error" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">
+        Имя не должно содержать цифр и спецсимоволов
+    </span><br/>
+    <label for="lastname">Enter last name: </label>
+    <input type="text" name="lastName" th:field="*{lastname}" id="lastname" tabindex="2"/>
+    <span class="error" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">
+        Фамилия не должна содержать цифр и спецсимоволов
+    </span><br/>
+    <label for="email">Email: </label>
+    <input type="text" name="email" th:field="*{email}" id="email" tabindex="3"/>
+    <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+        Неверный адрес электропочты
+    </span><br/>
+    <input type="submit" value="Update"/>
 </form>
 <a href="/">Return</a>
 </body>

@@ -6,10 +6,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Pattern;
 
 @Data
 @Entity
@@ -18,12 +18,13 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "firstname")
-    @Pattern(regexp = "^[a-zA-Z]+$")
-    private String firstname;
+    @Pattern(regexp = "^[a-zA-Z]+$") private String firstname;
+
     @Column(name = "lastname")
-    @Pattern(regexp = "^[a-zA-Z]+$")
-    private String lastname;
+    @Pattern(regexp = "^[a-zA-Z]+$") private String lastname;
+
     @Column(name = "email")
     @Email
     private String email;
