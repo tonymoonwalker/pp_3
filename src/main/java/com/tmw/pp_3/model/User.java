@@ -20,13 +20,15 @@ public class User {
     private Long id;
 
     @Column(name = "firstname")
-    @Pattern(regexp = "^[a-zA-Z]+$") private String firstname;
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "Не должно содержать цифр и спецсимволов")
+    private String firstname;
 
     @Column(name = "lastname")
-    @Pattern(regexp = "^[a-zA-Z]+$") private String lastname;
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "Не должно содержать цифр и спецсимволов")
+    private String lastname;
 
     @Column(name = "email")
-    @Email
+    @Email(message = "Неверный формат электропочты")
     private String email;
 
     public void setId(Long id) {
