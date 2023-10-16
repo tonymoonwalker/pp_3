@@ -20,11 +20,11 @@ public class User {
     private Long id;
 
     @Column(name = "firstname")
-    @Pattern(regexp = "^[a-zA-Z]+$", message = "Не должно содержать цифр и спецсимволов")
+    @Pattern(regexp = "^[a-zA-Zа-яА-Я ]+$", message = "Не должно содержать цифр и спецсимволов")
     private String firstname;
 
     @Column(name = "lastname")
-    @Pattern(regexp = "^[a-zA-Z]+$", message = "Не должно содержать цифр и спецсимволов")
+    @Pattern(regexp = "^[a-zA-Zа-яА-Я ]+$", message = "Не должно содержать цифр и спецсимволов")
     private String lastname;
 
     @Column(name = "email")
